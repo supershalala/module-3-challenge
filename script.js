@@ -6,6 +6,18 @@ Character length between 8 and 180
 lower, upper, numeric and or special characters 
 */
 
+// User Prompts
+
+var userLength = prompt("how long will you like your password ");
+
+var userCase = prompt("which case would you like")
+
+var userNumbers = prompt ("include numbers?")
+
+var userSymbols = prompt ("include symbols?")
+
+
+//selection object
 var randomSelection = {
   lower: getRandomLower,
 
@@ -44,12 +56,7 @@ console.log (getRandomLower ())
 
 function generatePassword() {
 
-  // aske user for length
-  var userLength = prompt("how long will you like your password ");
-      charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-      retVal = "";
 
-      var userCase = prompt ("Enter upper, lower or mixed") 
 
   for (var i = 0, n = charset.length; i < userLength; ++i) {
       retVal += charset.charAt(Math.floor(Math.random() * n));
