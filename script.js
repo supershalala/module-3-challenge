@@ -6,6 +6,15 @@ Character length between 8 and 180
 lower, upper, numeric and or special characters 
 */
 
+var randomSelection = {
+  lower: getRandomLower,
+
+  upper: getRandomUpper,
+
+  number: getRandomNumber,
+
+  symbol: getRandomSymbol,
+}
 
 
 
@@ -29,7 +38,7 @@ function getRandomSymbol () {
   return symbols[Math.floor(Math.random()* symbols.length)];
 }
 
-
+console.log (getRandomLower ()) 
 
 
 
@@ -53,7 +62,7 @@ generatePassword ();
 
 console.log (retVal)
 
-console.log (math.floor (Math.random() * 26))
+
 
 
 
