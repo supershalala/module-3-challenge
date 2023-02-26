@@ -1,24 +1,46 @@
 // Assignment code here
 
-/*
-prompt
-Character length between 8 and 180
-lower, upper, numeric and or special characters 
-*/
+
 
 // User Prompts
 
 var userLength = prompt("how long will you like your password ");
 
-var userCase = prompt("which case would you like")
+var upperCase = prompt("Include upper");
+if (upperCase === "yes") {
+  upperCase = true;
+} else upperCase = false;
 
-var userNumbers = prompt ("include numbers?")
+var lowerCase = prompt("Include lower?");
+if (lowerCase === "yes") {
+  lowerCase = true;
+} else lowerCase = false;
 
-var userSymbols = prompt ("include symbols?")
+var userNumbers = prompt("include numbers?");
+if (userNumbers === "yes") {
+  userNumbers = true;
+} else userNumbers = false;
 
+var userSymbols = prompt("include symbols?");
+
+if (userSymbols === "yes") {
+  userSymbols = true;
+} else userSymbols = false;
+
+console.log("user Length", userLength);
+
+console.log("upper case", upperCase);
+
+console.log("lower case", lowerCase);
+
+console.log("user Numbers ", userNumbers);
+
+console.log("User Symbols", userSymbols);
+// Prompts
 
 //selection object
 var randomSelection = {
+  
   lower: getRandomLower,
 
   upper: getRandomUpper,
@@ -26,53 +48,39 @@ var randomSelection = {
   number: getRandomNumber,
 
   symbol: getRandomSymbol,
+};
+
+// Generator Functions
+
+function getRandomLower() {
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 }
 
-
-
-// Generator Functions 
-
-function getRandomLower () {
-  return String.fromCharCode(Math.floor(Math.random() * 26) +97);
+function getRandomUpper() {
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
 }
 
-function getRandomUpper () {
-  return String.fromCharCode(Math.floor(Math.random() * 26) +65);
+function getRandomNumber() {
+  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
 }
 
-function getRandomNumber () {
-  return String.fromCharCode(Math.floor(Math.random() * 10) +48);
+function getRandomSymbol() {
+  var symbols = "~!@#$%^&*()_-+={[}]|\\:;\"'<>,.?/";
+
+  return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
-function getRandomSymbol () {
-  var symbols = "~!@#$%^&*()_-+={[}]|\\:;\"'<>,.?/"; 
-
-  return symbols[Math.floor(Math.random()* symbols.length)];
-}
-
-console.log (getRandomLower ()) 
-
-
+console.log(getRandomLower());
 
 function generatePassword() {
-
-
-
-  for (var i = 0, n = charset.length; i < userLength; ++i) {
-      retVal += charset.charAt(Math.floor(Math.random() * n));
-  }
-  return retVal;
+  console.log("selection array ", selctionArray);
+  // for (var i = 0, n = charset.length; i < userLength; ++i) {
+  //     retVal += charset.charAt(Math.floor(Math.random() * n));
+  // }
+  // return retVal;
 }
 
-
-generatePassword ();
-
-console.log (retVal)
-
-
-
-
-
+generatePassword();
 // // Get references to the #generate element
 // var generateBtn = document.querySelector("#generate");
 
