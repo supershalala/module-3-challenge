@@ -1,46 +1,47 @@
 // Assignment code here
 
-
-
 // User Prompts
+function userPrompts() {
+  var userLength = +prompt("how long will you like your password ");
 
-var userLength = prompt("how long will you like your password ");
+  var upperCase = prompt("Include upper");
+  if (upperCase === "yes") {
+    upperCase = true;
+  } else upperCase = false;
 
-var upperCase = prompt("Include upper");
-if (upperCase === "yes") {
-  upperCase = true;
-} else upperCase = false;
+  var lowerCase = prompt("Include lower?");
+  if (lowerCase === "yes") {
+    lowerCase = true;
+  } else lowerCase = false;
 
-var lowerCase = prompt("Include lower?");
-if (lowerCase === "yes") {
-  lowerCase = true;
-} else lowerCase = false;
+  var userNumbers = prompt("include numbers?");
+  if (userNumbers === "yes") {
+    userNumbers = true;
+  } else userNumbers = false;
 
-var userNumbers = prompt("include numbers?");
-if (userNumbers === "yes") {
-  userNumbers = true;
-} else userNumbers = false;
+  var userSymbols = prompt("include symbols?");
 
-var userSymbols = prompt("include symbols?");
+  if (userSymbols === "yes") {
+    userSymbols = true;
+  } else userSymbols = false;
 
-if (userSymbols === "yes") {
-  userSymbols = true;
-} else userSymbols = false;
-
-console.log("user Length", userLength);
-
-console.log("upper case", upperCase);
-
-console.log("lower case", lowerCase);
-
-console.log("user Numbers ", userNumbers);
-
-console.log("User Symbols", userSymbols);
-// Prompts
+  console.log(
+    "Length ",
+    userLength,
+    "upperCase ",
+    upperCase,
+    "lowercase ",
+    lowerCase,
+    "numbers ",
+    userNumbers,
+    "symbols ",
+    userSymbols
+  );
+      generatePassword (lowerCase, upperCase, userLength, userNumbers, userSymbols);
+}
 
 //selection object
-var randomSelection = {
-  
+const randomFunc = {
   lower: getRandomLower,
 
   upper: getRandomUpper,
@@ -49,6 +50,47 @@ var randomSelection = {
 
   symbol: getRandomSymbol,
 };
+
+
+// generate password 
+
+function generatePassword (lowerCase, upperCase, userLength, userNumbers, userSymbols ) {
+
+
+
+let generatedPassword = " ";
+
+var typesCount = lowerCase + upperCase + userNumbers + userSymbols;
+
+console.log("types count ", typesCount);
+
+var typesArr = [
+  { lower: lowerCase },
+  { upper: upperCase },
+  { number: userNumbers },
+  { symbol: userSymbols },
+].filter((item) => Object.values(item)[0]);
+
+console.log("types array ", typesArr);
+
+for (let i = 0; i < userLength; i += typesCount) {
+  typesArr.forEach((type) => {
+    const funcName = Object.keys(type)[0];
+
+    console.log("func name ", funcName);
+    console.log("randomFunc[funcName]", randomFunc[funcName]);
+    generatedPassword += randomFunc[funcName]();
+    console.log("random selection ", randomFunc);
+  });
+console.log ("generated password ", generatePassword)
+ 
+}
+
+
+
+
+
+}
 
 // Generator Functions
 
@@ -72,26 +114,18 @@ function getRandomSymbol() {
 
 console.log(getRandomLower());
 
-function generatePassword() {
-  console.log("selection array ", selctionArray);
-  // for (var i = 0, n = charset.length; i < userLength; ++i) {
-  //     retVal += charset.charAt(Math.floor(Math.random() * n));
-  // }
-  // return retVal;
+
+// Get references to the #generate element
+var generateBtn = document.querySelector("#generate");
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
 }
 
-generatePassword();
-// // Get references to the #generate element
-// var generateBtn = document.querySelector("#generate");
 
-// // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-
-//   passwordText.value = password;
-
-// }
-
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
+// Add event listener to generate button
+generateBtn.addEventListener("click", generatePassword);
