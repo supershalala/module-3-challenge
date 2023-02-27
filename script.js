@@ -77,7 +77,14 @@ function generatePassword(randomFunc) {
   }
 
 
+
   var typesCount = lowerCase + upperCase + userNumbers + userSymbols;
+// Validation to ensure at least one is selected 
+  if (typesCount === 0 ) {
+    alert("Please select at least one option to include in your password!");
+    return errorMessage; // b) exit the function - valodates input
+
+  }
     
   console.log("types count ", typesCount);
 
