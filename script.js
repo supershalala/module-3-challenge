@@ -1,9 +1,38 @@
-// 3  create password
+// Generator Functions
+    
+function getRandomLower() {
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+}
 
-//  4 display password
-// return "this will be your password"
+function getRandomUpper() {
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+}
 
-function generatePassword() {
+function getRandomNumber() {
+  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+}
+
+function getRandomSymbol() {
+  var symbols = "~!@#$%^&*()_-+={[}]|\\:;\"'<>,.?/";
+
+  return symbols[Math.floor(Math.random() * symbols.length)];
+}
+
+console.log(getRandomLower());
+
+const randomFunc = {
+  lower: getRandomLower,
+
+  upper: getRandomUpper,
+
+  number: getRandomNumber,
+
+  symbol: getRandomSymbol,
+};
+
+// Function object 
+
+function generatePassword(randomFunc) {
   console.log("You've clicked the generate password button");
 
   // 1. User Prompts for password criteria
@@ -11,11 +40,11 @@ function generatePassword() {
   // a)password length is number between 8 and 128
 
   var userLength = +prompt("Character length of password: Min 8 Max 128 ");
-  if (userLength >= 8 && userLength <= 129) {
+  if (userLength >= 8 && userLength <= 128) {
     console.log("User Length selected ", userLength);
   } else {
     alert("Please only pick between 8 and 128 characters!");
-    return; // exit the function - valodates input
+    return; // b) exit the function - valodates input
   }
 
   var upperCase = confirm("Include upper");
@@ -46,11 +75,38 @@ function generatePassword() {
   }
 
 
+  var typesCount = lowerCase + upperCase + userNumbers + userSymbols;
+    
+  console.log("types count ", typesCount);
+
+  var typesArray = [
+    { name: "lower", include: lowerCase },
+    { name: "upper", include: upperCase },
+    { name: "number", include: userNumbers },
+    { name: "symbol", include: userSymbols },
+  ];
+  console.log ("types array " , typesArray)
+// 2) Create the password 
+
+  // Declare variable for generated password
+  var generatedPassword = '';
 
 
 
+// iteration loop 
+for (let i=0; i<userLength; i+=typesCount) {
+  typesArray.forEach(type => {
+    if (type.include) {
+      generatedPassword += randomFunc[type.name]();
+    }
+  });
 
-  
+}
+
+
+const finalPassword = generatedPassword.slice(0, userLength);
+return finalPassword;
+
 }
 
 // Assignment Code
@@ -58,7 +114,8 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  // had to pass through randomFunc object through generatepassword
+  var password = generatePassword(randomFunc);
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
