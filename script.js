@@ -39,39 +39,41 @@ function generatePassword(randomFunc) {
 
   // a)password length is number between 8 and 128
 
+  var errorMessage = "Please Click the Generate Button Password button to start again!"
+
   var userLength = +prompt("Character length of password: Min 8 Max 128 ");
   if (userLength >= 8 && userLength <= 128) {
     console.log("User Length selected ", userLength);
   } else {
     alert("Please only pick between 8 and 128 characters!");
-    return; // b) exit the function - valodates input
+    return errorMessage; // b) exit the function - valodates input
   }
 
-  var upperCase = confirm("Include upper");
+  var upperCase = confirm("Include uppercase characters?");
   if (upperCase) {
     console.log("user chose to use uppercase", upperCase);
   } else {
-    console.log("user chose no uppar case letters", upperCase);
+    console.log("user chose no uppar case letters");
   }
 
-  var lowerCase = confirm("Include lowercase letters?");
+  var lowerCase = confirm("Include lowercase characters?");
   if (lowerCase) {
     console.log("user chose to use lowercase", lowerCase);
   } else {
-    console.log("user chose no lowercase letters", lowerCase);
+    console.log("user chose no lowercase letters");
   }
 
-  var userNumbers = confirm("Use numbers");
+  var userNumbers = confirm("Use number characters?");
   if (userNumbers) {
-    console.log("user chose to use lowercase", userNumbers);
+    console.log("user chose to use numbers", userNumbers);
   } else {
-    console.log("user chose no lowercase letters", userNumbers);
+    console.log("user chose no numberss");
   }
-  var userSymbols = confirm("Use symbols?");
+  var userSymbols = confirm("Use special characters?");
   if (userSymbols) {
-    console.log("user chose to use lowercase", userSymbols);
+    console.log("user chose to use special characters", userSymbols);
   } else {
-    console.log("user chose no lowercase letters", userSymbols);
+    console.log("user chose no lowercase special characters");
   }
 
 
