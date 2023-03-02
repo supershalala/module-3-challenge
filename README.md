@@ -1,7 +1,20 @@
 
 # Password Generator  - Module 3 Challenge 
 
-This password generator was built create a secure password easily based on user inputs. 
+This password generator was built to create a secure password easily based on user inputs. 
+
+## Table of Contents
+
+- [Screenshot](#screenshot)
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Running the Website](#running-the-website)
+- [Built With](#built-with)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
+
 
 
 
@@ -42,12 +55,11 @@ HTML, CSS and JavaScript
 This project is licensed under the MIT License.
 
 ## Acknowledgements
-Mozilla Developer Network
-W3C Schools
-Traversy Media on Youtube - https://www.youtube.com/watch?v=duNmhKgtcsI&t=1507s
-
-Paul Keldsen on Youtube - https://www.youtube.com/watch?v=x4HUaiazDes 
-Stack Overflow
+- Mozilla Developer Network
+- W3C Schools
+- Traversy Media on Youtube - https://www.youtube.com/watch?v=duNmhKgtcsI&t=1507s
+- Paul Keldsen on Youtube - https://www.youtube.com/watch?v=x4HUaiazDes 
+- Stack Overflow
 
 
 ## Contact
